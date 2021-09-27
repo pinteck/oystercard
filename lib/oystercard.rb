@@ -12,4 +12,8 @@ class Oystercard
     raise "Maximum limit of #{MAXIMUM_BALANCE} exceeded" if balance + amount > MAXIMUM_BALANCE
     @balance += amount
   end
+
+  def deduct(fare_value)
+    @balance -= fare_value
+  end
 end
