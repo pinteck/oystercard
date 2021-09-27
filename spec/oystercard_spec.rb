@@ -31,4 +31,17 @@ describe Oystercard do
     end
   end
 
+  describe '#status' do
+    it { is_expected.not_to be_in_journey }
+    it 'changes the status to be in journey after touching in' do
+      subject.touch_in
+      expect(subject).to be_in_journey
+    end
+
+    it 'changes the status not to be in journey after touching out' do
+      subject.touch_in
+      subject.touch_out
+      expect(subject).not_to be_in_journey
+    end
+  end
 end
