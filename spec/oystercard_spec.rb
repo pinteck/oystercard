@@ -8,10 +8,7 @@ describe Oystercard do
     end
   end
 
-
   describe '#top_up' do
-    it { is_expected.to respond_to(:top_up).with(1).argument }
-
     it 'adds money to the card' do
       expect { subject.top_up 1 } .to change { subject.balance }.by 1
     end
@@ -24,8 +21,6 @@ describe Oystercard do
   end
 
   describe '#deduct' do
-    it { is_expected.to respond_to(:deduct).with(1).argument }
-
     it 'deducts the fare value from the balance' do
       expect {subject.deduct 1 } .to change { subject.balance }.by -1
     end
@@ -44,4 +39,5 @@ describe Oystercard do
       expect(subject).not_to be_in_journey
     end
   end
+
 end
