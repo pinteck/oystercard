@@ -12,7 +12,7 @@ describe Oystercard do
     end
 
     it 'deducts the fare value from the balance' do
-      expect {subject.deduct 1 } .to change { subject.balance }.by -1
+      expect {subject.touch_out} .to change { subject.balance }.by -1
     end
   end
   
@@ -35,6 +35,10 @@ describe Oystercard do
       expect(subject).to be_in_journey
     end
 
+    it 'deducts the correct amount from the card' do
+      expect{subject.touch_out}.to change{subject.balance}.by(-1)
+    end
+
     it 'changes the status not to be in journey after touching out' do
       subject.touch_in
       subject.touch_out
@@ -50,6 +54,5 @@ describe Oystercard do
       expect{subject.touch_in}.to raise_error 'Not enough balance' 
     end
   end
-
 
 end

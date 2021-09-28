@@ -2,8 +2,9 @@ class Oystercard
   
   MAXIMUM_BALANCE = 90
   MINIMUM_BALANCE = 1 
+  FARE_VALUE = 1
 
-  attr_reader :balance, :in_journey
+  attr_reader :balance, :in_journey, :fare_value
 
   def initialize 
     @balance = 0
@@ -15,10 +16,6 @@ class Oystercard
     @balance += amount
   end
 
-  def deduct(fare_value)
-    @balance -= fare_value
-  end
-
   def touch_in
     raise "Not enough balance" if balance < MINIMUM_BALANCE
     @in_journey = true
@@ -26,9 +23,16 @@ class Oystercard
 
   def touch_out
     @in_journey = false
+    deduct
   end
 
   def in_journey?
     in_journey
+  end
+
+  private 
+  
+  def deduct()
+    @balance -= 1
   end
 end
