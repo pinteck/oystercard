@@ -12,7 +12,7 @@ describe Oystercard do
     end
 
     it 'deducts the fare value from the balance' do
-      expect {subject.touch_out} .to change { subject.balance }.by -1
+      expect {subject.touch_out}.to change { subject.balance }.by -Oystercard::STD_FARE_VALUE
     end
   end
   
@@ -33,10 +33,6 @@ describe Oystercard do
     it 'changes the status to be in journey after touching in' do
       subject.touch_in
       expect(subject).to be_in_journey
-    end
-
-    it 'deducts the correct amount from the card' do
-      expect{subject.touch_out}.to change{subject.balance}.by(-1)
     end
 
     it 'changes the status not to be in journey after touching out' do
