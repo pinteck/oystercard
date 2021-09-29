@@ -61,14 +61,12 @@
           2,
           null,
           null,
-          null,
           null
         ]
       },
       "/Users/p/Makers/Projects/week4/oop/oystercard/lib/oystercard.rb": {
         "lines": [
           1,
-          null,
           1,
           1,
           1,
@@ -116,6 +114,6 @@
         ]
       }
     },
-    "timestamp": 1632848887
+    "timestamp": 1632934028
   }
 }
