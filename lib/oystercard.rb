@@ -9,6 +9,7 @@ class Oystercard
     @balance = 0
     @in_journey = false
     @journeys = []
+    @journey = {}
   end
 
   def top_up(amount)
@@ -20,21 +21,17 @@ class Oystercard
     @entry_station = station
     raise "Not enough balance" if balance < MINIMUM_BALANCE
     @in_journey = true
-    # journey << @entry_station
   end
 
   def touch_out(station)
     @exit_station = station
     @in_journey = false
     deduct(STD_FARE_VALUE)
-    # journey << @exit_station
-    # @entry_station = nil
   end
 
   def save_journey
-    journey = {}
-    journey[@entry_station] = @exit_station
-    journey
+    @journey[@entry_station] = @exit_station
+    @journey
   end
 
   def in_journey?
