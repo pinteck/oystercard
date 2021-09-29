@@ -53,9 +53,9 @@ describe Oystercard do
       expect(subject.save_journey).to eq "bank" => "westminster"
     end
 
-    # it "starts with an empty list journeys" do
-    #   expect(subject.journeys).to be_empty
-    # end
+    it "starts with an empty list journeys" do
+      expect(subject.journeys).to be_empty
+    end
   end
 
   context "when the card is empty" do

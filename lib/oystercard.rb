@@ -7,8 +7,8 @@ class Oystercard
 
   def initialize
     @balance = 0
-    @in_journey = in_journey
-    # journeys = []
+    @in_journey = false
+    @journeys = []
   end
 
   def top_up(amount)
