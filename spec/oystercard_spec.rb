@@ -34,18 +34,28 @@ describe Oystercard do
 
     it "changes the status not to be in journey after touching out" do
       subject.touch_in(station)
-      subject.touch_out
+      subject.touch_out(station)
       expect(subject).not_to be_in_journey
     end
 
     it "deducts the fare value from the balance" do
-      expect { subject.touch_out }.to change { subject.balance }.by -Oystercard::STD_FARE_VALUE
+      expect { subject.touch_out(station) }.to change { subject.balance }.by -Oystercard::STD_FARE_VALUE
     end
 
     it "remembers the entry station after touch in" do
       subject.touch_in(station)
       expect(subject.entry_station).to eq station
     end
+
+    it "stores the journey" do
+      subject.touch_in("bank")
+      subject.touch_out("westminster")
+      expect(subject.save_journey).to eq "bank" => "westminster"
+    end
+
+    # it "starts with an empty list journeys" do
+    #   expect(subject.journeys).to be_empty
+    # end
   end
 
   context "when the card is empty" do
