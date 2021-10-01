@@ -31,6 +31,7 @@ class Oystercard
 
   def save_journey
     @journey[@entry_station] = @exit_station
+    @journeys << @journey
     @journey
   end
 
